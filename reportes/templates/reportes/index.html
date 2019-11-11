@@ -1,5 +1,8 @@
+{% extends 'reportes/base.html' %}
+
+{% block content %}
 {% if pedidos %}
-    <table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>#</th>
@@ -11,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for pedido in pedidos %}
+        {% for pedido in pedidos %}
         <tr>
             <td>{{ pedido.id }}</td>
             <td>{{ pedido.usuario }}</td>
@@ -24,9 +27,10 @@
                 <a>3</a>
             </td>
         </tr>
-    {% endfor %}
-    </tbody>                            
-    </table>
+        {% endfor %}
+    </tbody>
+</table>
 {% else %}
-    <p>No polls are available.</p>
+<p>No polls are available.</p>
 {% endif %}
+{% endblock %}

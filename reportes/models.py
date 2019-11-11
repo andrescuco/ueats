@@ -32,17 +32,33 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=80)
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=1, choices=MENU)
-    cantidad = models.IntegerField()
     precio = models.DecimalField(max_digits=6, decimal_places=3)
 
     def __str__(self):
         return self.nombre
 
+#class ProductoPedido(models.Model):
+#    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+#    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+#    cantidad = models.IntegerField()
+# 
+#    def precio_total(self):
+#        return self.cantidad * self.producto.precio
+#
+#    def __str__(self):
+#        return self.nombre
+
 class Pedido(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     restaurante = models.OneToOneField(Restaurante, on_delete=models.CASCADE)
-    producto = models.ManyToManyField(Producto)
+    producto = models.ManyToManyField(Producto) # Cambiar a ProductoPedido
     direccion_envio = models.CharField(max_length=120)
+
+#  def pedido_total(self):
+#        total = 0
+#        for order_item in self.productos.all():
+#            total += order_item.precio_total()
+#        return total
 
     # Función que calcula mediante el id de cada producto el valor total del pedido
     def _total(self):
