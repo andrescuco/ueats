@@ -50,7 +50,7 @@ class Producto(models.Model):
 
 class Pedido(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    restaurante = models.OneToOneField(Restaurante, on_delete=models.CASCADE)
+    restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
     producto = models.ManyToManyField(Producto) # Cambiar a ProductoPedido
     direccion_envio = models.CharField(max_length=120)
 
