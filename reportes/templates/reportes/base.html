@@ -39,6 +39,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'productos' %}active{% endif %}" href="{% url 'productos' %}">
+                                    <span data-feather="shopping-cart"></span>
+                                    Productos
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'repartidores' %}active{% endif %}" href="{% url 'repartidores' %}">
+                                    <span data-feather="truck"></span>
+                                    Repartidores
+                                </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'clientes' %}active{% endif %}" href="{% url 'clientes' %}">
                                 <span data-feather="users"></span>
                                 Clientes
@@ -50,18 +62,6 @@
                                 Quejas
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'productos' %}active{% endif %}" href="productos">
-                                <span data-feather="shopping-cart"></span>
-                                Productos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'repartidores' %}active{% endif %}" href="{% url 'repartidores' %}">
-                                    <span data-feather="truck"></span>
-                                    Repartidores
-                                </a>
-                            </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'reportes' %}active{% endif %}" href="reportes">
                                 <span data-feather="bar-chart-2"></span>

@@ -1,0 +1,56 @@
+{% extends 'reportes/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
+        <h2>Productos</h2>
+        <div>
+            <a  href="/admin/reportes/producto/"><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+        </div>
+</div>
+{% if productos %}
+<div class="card-deck">
+    {% for producto in productos %}
+    <div class="card">
+            <img src="https://d1ralsognjng37.cloudfront.net/0a51c720-0283-4c22-87d9-6cd7a484d373.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre}}</h5>
+              <p class="card-text">{{ producto.restaurante }}</p>
+            </div>
+            <div class="card-footer">
+                    <small class="text-muted">${{ producto.precio }}</small>
+            </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% comment %}
+{% if productos %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Restaurante</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre}}</td>
+            <td>{{ producto.restaurante }}</td>
+            <td>{{ producto.tipo }}</td>
+            <td>${{ producto.precio }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay productos en la base de datos.</p>
+{% endif %}
+{% endcomment %}
+{% endblock %}

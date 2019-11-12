@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .models import Pedido
 from .models import Usuario
 from .models import Repartidor
+from .models import Producto
 
 def index(request):
     pedidos = list(Pedido.objects.all().order_by('-id'))
@@ -17,9 +18,9 @@ def exportar_pedidos_csv(request):
     response['Content-Disposition'] = 'attachment; filename="pedidos.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Fecha', 'Cliente', 'Restaurante', 'Productos'])
+    writer.writerow(['Fecha', 'Cliente', 'Restaurante', 'Productos', 'Estado'])
 
-    pedidos = Pedido.objects.all().values_list('fecha', 'usuario', 'restaurante', 'producto')
+    pedidos = Pedido.objects.all().values_list('fecha', 'usuario', 'restaurante', 'producto', 'estado')
     for pedido in pedidos:
         writer.writerow(pedido)
 
@@ -35,3 +36,8 @@ def repartidores(request):
     repartidores = list(Repartidor.objects.all())
     context = {'repartidores': repartidores}
     return render(request, 'reportes/repartidores.html', context)
+
+def productos(request):
+    productos = list(Producto.objects.all())
+    context = {'productos': productos}
+    return render(request, 'reportes/productos.html', context)
