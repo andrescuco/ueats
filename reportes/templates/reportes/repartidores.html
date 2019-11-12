@@ -17,6 +17,7 @@
             <th>Dirección</th>
             <th>Correo</th>
             <th>Vehiculo</th>
+            <th>Pedido</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td>{{ repartidor.direccion }}</td>
             <td>{{ repartidor.correo }}</td>
             <td>{{ repartidor.vehiculo }}</td>
+            <td>{% if repartidor.pedido_asignado == None %}<a href="/admin/reportes/repartidor/{{ repartidor.id }}/change">Asignar <span data-feather="arrow-right"></span></a>{% else %}{{ repartidor.pedido_asignado }}{% endif %}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -10,18 +10,6 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nombre + " " + self.apellido
 
-class Repartidor(Usuario):
-    VEHICULO = (
-        ('B', 'Bicicleta'),
-        ('M', 'Moto'),
-        ('C', 'Carro')
-    )
-
-    vehiculo = models.CharField(max_length=1, choices=VEHICULO)
-
-    def __str__(self):
-        return self.nombre + " " + self.apellido
-
 class Restaurante(models.Model):
     CIUDAD = (
         ('BOG', 'Bogota D.C'),
@@ -75,7 +63,7 @@ class Pedido(models.Model):
     direccion_envio = models.CharField(max_length=120)
     fecha = models.DateField(auto_now_add=True) 
     estado = models.CharField(max_length=2, choices=ESTADO, default='EN')
-    #repartidor = models.ForeignKey(Repartidor, on_delete=models.CASCADE)
+    #repartidor = models.OneToOneField(Repartidor, on_delete=models.CASCADE)
 
 #    def pedido_total(self):
 #        total = 0
@@ -97,3 +85,16 @@ class Pedido(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+class Repartidor(Usuario):
+    VEHICULO = (
+        ('B', 'Bicicleta'),
+        ('M', 'Moto'),
+        ('C', 'Carro')
+    )
+
+    vehiculo = models.CharField(max_length=1, choices=VEHICULO)
+    pedido_asignado = models.ForeignKey(Pedido, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre + " " + self.apellido
