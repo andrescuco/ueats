@@ -1,0 +1,31 @@
+{% extends 'reportes/base.html' %}
+
+{% block content %}
+<h2>Repartidores</h2>
+{% if repartidores %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Correo</th>
+            <th>Vehiculo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for repartidor in repartidores %}
+        <tr>
+            <td>{{ repartidor.id }}</td>
+            <td>{{ repartidor.nombre}} {{ repartidor.apellido }}</td>
+            <td>{{ repartidor.direccion }}</td>
+            <td>{{ repartidor.correo }}</td>
+            <td>{{ repartidor.vehiculo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay repartidores en la base de datos.</p>
+{% endif %}
+{% endblock %}

@@ -33,31 +33,37 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'index' %}">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">
                                 <span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'clientes' %}">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'clientes' %}active{% endif %}" href="{% url 'clientes' %}">
                                 <span data-feather="users"></span>
                                 Clientes
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="quejas">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'quejas' %}active{% endif %}" href="quejas">
                                 <span data-feather="user-x"></span>
                                 Quejas
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="productos">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'productos' %}active{% endif %}" href="productos">
                                 <span data-feather="shopping-cart"></span>
                                 Productos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="reportes">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'repartidores' %}active{% endif %}" href="repartidores">
+                                    <span data-feather="truck"></span>
+                                    Repartidores
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'reportes' %}active{% endif %}" href="reportes">
                                 <span data-feather="bar-chart-2"></span>
                                 Reportes
                             </a>

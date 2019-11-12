@@ -9,6 +9,18 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nombre + " " + self.apellido
 
+class Repartidor(Usuario):
+    VEHICULO = (
+        ('B', 'Bicicleta'),
+        ('M', 'Moto'),
+        ('C', 'Carro')
+    )
+
+    vehiculo = models.CharField(max_length=1, choices=VEHICULO)
+
+    def __str__(self):
+        return self.nombre + " " + self.apellido
+
 class Restaurante(models.Model):
     CIUDAD = (
         ('BOG', 'Bogota D.C'),
@@ -43,22 +55,24 @@ class Producto(models.Model):
 #    cantidad = models.IntegerField()
 # 
 #    def precio_total(self):
-#        return self.cantidad * self.producto.precio
+#       return self.cantidad * self.producto.precio
 #
 #    def __str__(self):
-#        return self.nombre
+#        return str(self.producto) + " (x" + str(self.cantidad) + ")"
 
 class Pedido(models.Model):
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
-    producto = models.ManyToManyField(Producto) # Cambiar a ProductoPedido
+    producto = models.ManyToManyField(Producto) 
     direccion_envio = models.CharField(max_length=120)
 
-#  def pedido_total(self):
+#    def pedido_total(self):
 #        total = 0
-#        for order_item in self.productos.all():
-#            total += order_item.precio_total()
+#        for producto_pedido in self.productos.all():
+#            total += producto_pedido.precio_total()
 #        return total
+#    
+#    total = property(pedido_total)
 
     # Función que calcula mediante el id de cada producto el valor total del pedido
     def _total(self):

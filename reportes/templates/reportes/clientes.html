@@ -8,7 +8,6 @@
         <tr>
             <th>#</th>
             <th>Nombre</th>
-            <th>Apellido</th>
             <th>Dirección</th>
             <th>Correo</th>
         </tr>
@@ -17,8 +16,7 @@
         {% for usuario in usuarios %}
         <tr>
             <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.nombre}} {{ usuario.apellido }}</td>
             <td>{{ usuario.direccion }}</td>
             <td>{{ usuario.correo }}</td>
         </tr>
