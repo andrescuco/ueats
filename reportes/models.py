@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=80)
@@ -61,10 +62,19 @@ class Producto(models.Model):
 #        return str(self.producto) + " (x" + str(self.cantidad) + ")"
 
 class Pedido(models.Model):
+    ESTADO = (
+        ('ER', 'En repartición'),
+        ('EN', 'Entregado'),
+        ('CA', 'Cancelado'),
+    )
+
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
     producto = models.ManyToManyField(Producto) 
     direccion_envio = models.CharField(max_length=120)
+    fecha = models.DateField(auto_now_add=True) 
+    estado = models.CharField(max_length=2, choices=ESTADO, default='EN')
+    #repartidor = models.ForeignKey(Repartidor, on_delete=models.CASCADE)
 
 #    def pedido_total(self):
 #        total = 0

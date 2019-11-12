@@ -22,7 +22,7 @@
         <span class="navbar-brand mb-0 h1">UEats Manager</span>
         <ul class="navbar-nav px-3">
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin">Admin</a>
+                  <a class="nav-link" href="/admin">Admin <span data-feather="log-in"></span></a>
                 </li>
         </ul>
     </nav>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'repartidores' %}active{% endif %}" href="repartidores">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'repartidores' %}active{% endif %}" href="{% url 'repartidores' %}">
                                     <span data-feather="truck"></span>
                                     Repartidores
                                 </a>
