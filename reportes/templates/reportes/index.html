@@ -1,6 +1,37 @@
 {% extends 'reportes/base.html' %}
 
 {% block content %}
+<canvas id="myChart"></canvas>
+<script>
+$.ajax({
+    method: 'GET',
+    url: '/api/chart/data/', 
+    success: function(data) {
+        // labels = data.labels
+        defaultData = data.default
+        setChart()
+        console.log(data)
+    },
+    error: function(error_data) {
+        console.log('error')
+    }
+})
+
+function setChart() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['May', 'June', 'July'],
+                datasets: [{
+                    label: 'Pedidos',
+                    data: defaultData
+                }]
+            },
+            options: {}
+        });
+}
+</script>
 <div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
         <h2>Pedidos</h2>
         <div>

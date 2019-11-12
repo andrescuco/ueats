@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 
 from . import views
+from .views import ChartData
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -11,5 +12,5 @@ urlpatterns = [
     path('repartidores/', views.repartidores, name='repartidores'),
     path('productos/', views.productos, name='productos'),
     url(r'^exportar/pedidos/csv/$', views.exportar_pedidos_csv, name='exportar_pedidos_csv'),
+    url(r'^api/chart/data/$', ChartData.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
