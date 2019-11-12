@@ -5,7 +5,7 @@ from .models import Usuario
 from .models import Repartidor
 
 def index(request):
-    pedidos = list(Pedido.objects.all())
+    pedidos = list(Pedido.objects.all().order_by('-id'))
     context = {'pedidos': pedidos}
     return render(request, 'reportes/index.html', context)
 
