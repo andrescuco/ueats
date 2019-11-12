@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path('exportar/pedidos/csv/$', include('reportes.urls')),
     path('repartidores/$', include('reportes.urls')),
     path('clientes/$', include('reportes.urls')),
     path('', include('reportes.urls')),
