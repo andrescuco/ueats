@@ -46,6 +46,7 @@ class Producto(models.Model):
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=1, choices=MENU)
     precio = models.DecimalField(max_digits=6, decimal_places=3)
+    imagen = models.ImageField(upload_to = 'reportes/static/reportes/img', default = 'https://d1ralsognjng37.cloudfront.net/0a51c720-0283-4c22-87d9-6cd7a484d373.jpeg')
 
     def __str__(self):
         return self.nombre

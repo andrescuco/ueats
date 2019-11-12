@@ -12,7 +12,7 @@
 <div class="card-deck">
     {% for producto in productos %}
     <div class="card">
-            <img src="https://d1ralsognjng37.cloudfront.net/0a51c720-0283-4c22-87d9-6cd7a484d373.jpeg" class="card-img-top" alt="...">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ producto.nombre}}</h5>
               <p class="card-text">{{ producto.restaurante }}</p>
