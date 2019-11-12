@@ -1,6 +1,29 @@
 {% extends 'reportes/base.html' %}
 
 {% block content %}
+<div class="card-deck">
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Pedidos</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ pedidos_totales }}</h5>
+
+        </div>
+</div>
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Clientes</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ usuarios_totales }}</h5>
+
+        </div>
+</div>
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Repartidores</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ repartidores_totales }}</h5>
+
+        </div>
+</div>
+</div>
 <canvas id="myChart"></canvas>
 <script>
 $.ajax({
@@ -22,7 +45,7 @@ function setChart() {
         var chart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['May', 'June', 'July'],
+                labels: ['Lunes', 'Martes', 'Miercoles'],
                 datasets: [{
                     label: 'Pedidos',
                     data: defaultData

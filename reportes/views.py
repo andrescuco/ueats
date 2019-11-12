@@ -27,7 +27,11 @@ class ChartData(APIView):
 
 def index(request):
     pedidos = list(Pedido.objects.all().order_by('-id'))
-    context = {'pedidos': pedidos}
+    pedidos_totales = Pedido.objects.all().count()
+    usuarios_totales = Usuario.objects.all().count()
+    repartidores_totales = Repartidor.objects.all().count()
+    context = {'pedidos': pedidos, 'pedidos_totales': pedidos_totales,
+    'usuarios_totales': usuarios_totales, 'repartidores_totales': repartidores_totales}
     return render(request, 'reportes/index.html', context)
 
 def clientes(request):
