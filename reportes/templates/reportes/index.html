@@ -1,7 +1,7 @@
 {% extends 'reportes/base.html' %}
 
 {% block content %}
-<div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
+<div class="d-flex justify-content-between flex-wrap align-items-center mb-3 pb-2 border-bottom">
         <h2>Dashboard</h2>
         <div>
             <a href="mailto:?subject=Hemos alcanzado {{ usuarios_totales }} usuarios totales en nuestro sistema de información."><button type="button"
@@ -61,7 +61,10 @@
                 datasets: [{
                     label: 'Pedidos',
                     data: defaultData,
-                    backgroundColor: 'rgb(95, 183, 9, 0.6)',
+                    backgroundColor: 'rgb(95, 183, 9, 0.3)',
+                    borderColor: 'rgb(95, 183, 9, 0.6)',
+                    lineTension: '0',
+
                 }
             ]},
             options: {
@@ -72,10 +75,10 @@
         });
     }
 </script>
-<div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
+<div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
     <h2>Pedidos</h2>
     <div>
-        <a href="/admin/reportes/pedido/"><button type="button"
+        <a href="/admin/reportes/pedido/"><button data-toggle="tooltip" data-placement="top" title="Tooltip on top" type="button"
                 class="btn btn-sm btn-outline-secondary">Editar</button></a>
         <a href="/exportar/pedidos/csv"><button type="button"
                 class="btn btn-sm btn-outline-secondary">Exportar</button></a>

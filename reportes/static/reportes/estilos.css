@@ -12,10 +12,20 @@ a, a:hover {
   color: #5fb709;
 }
 
+.page-item.active .page-link {
+  background-color: #5fb709;
+  border-color: #5fb709;
+}
+
 .card-deck {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: .5rem;
+}
+
+.navbar-brand {
+     padding-top: 0; 
+     padding-bottom: 0;
 }
 
 /* Sidebar */
