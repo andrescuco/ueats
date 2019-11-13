@@ -19,7 +19,7 @@ class ChartData(APIView):
         default_items = [
             Pedido.objects.all().count(),
             Usuario.objects.all().count(),
-            Producto.objects.all().count()]
+            Producto.objects.all().count(), 4, 5, 6, 9]
         data = {
             "default": default_items,
         }
