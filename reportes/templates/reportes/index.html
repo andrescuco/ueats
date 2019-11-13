@@ -1,10 +1,10 @@
 {% extends 'reportes/base.html' %}
 
 {% block content %}
-<div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
-        <h2>Dashboard   </h2>
+<div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
+        <h2>Dashboard</h2>
         <div>
-            <a href="#"><button type="button"
+            <a href="mailto:?subject=Hemos alcanzado {{ usuarios_totales }} usuarios totales en nuestro sistema de información."><button type="button"
                     class="btn btn-sm btn-outline-secondary">Compartir</button></a>
         </div>
 </div>
@@ -60,9 +60,10 @@
                 labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
                 datasets: [{
                     label: 'Pedidos',
-                    data: defaultData
-                }]
-            },
+                    data: defaultData,
+                    backgroundColor: 'rgb(95, 183, 9, 0.6)',
+                }
+            ]},
             options: {
                 legend: {
                     display: false

@@ -8,6 +8,10 @@ body {
   vertical-align: text-bottom;
 }
 
+a, a:hover {
+  color: #5fb709;
+}
+
 .card-deck {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -46,7 +50,7 @@ body {
   }
   
   .sidebar .nav-link.active {
-    color: #007bff;
+    color: #5fb709;
   }
   
   .sidebar .nav-link:hover .feather,

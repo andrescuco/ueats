@@ -98,3 +98,17 @@ class Repartidor(Usuario):
 
     def __str__(self):
         return self.nombre + " " + self.apellido
+
+#class Queja(models.Model):
+#    VEHICULO = (
+#        ('B', 'Bicicleta'),
+#        ('M', 'Moto'),
+#        ('C', 'Carro')
+#    )
+#
+#    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+#    tipo = models.CharField(max_length=1, choices=MENU)
+#    correo = models.CharField(max_length=120)
+#
+#    def __str__(self):
+#        return self.id
