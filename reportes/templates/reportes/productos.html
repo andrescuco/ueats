@@ -2,28 +2,62 @@
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap align-items-center mb-2 pb-2 border-bottom">
-        <h2>Productos</h2>
-        <div>
-            <a  href="/admin/reportes/producto/"><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
-        </div>
+    <h2>Productos</h2>
+    <div>
+        <a href="/admin/reportes/producto/"><button type="button"
+                class="btn btn-sm btn-outline-secondary">Editar</button></a>
+
+        <select id="restaurante" class="btn btn-sm btn-outline-secondary">
+            <option>Restaurante</option>
+            <option value="">Todos</option>
+            {% for restaurante in restaurantes %}
+            <option value="{{ restaurante }}">{{ restaurante }}</option>
+            {% endfor %}
+        </select>
+    </div>
 </div>
+
+<div class="card-deck">
+    {% for producto in productos %}
+    <div class="card mt-3">
+        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre}}</h5>
+            <p class="card-text">{{ producto.restaurante }}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">${{ producto.precio }}</small>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#restaurante').change(function () {
+            window.location.href = '?restaurante=' + $(this).val();
+        });
+    });
+</script>
+
+{% comment %}
 {% if productos %}
 <div class="card-deck">
     {% for producto in productos %}
     <div class="card mt-3">
-            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{ producto.nombre}}</h5>
-              <p class="card-text">{{ producto.restaurante }}</p>
-            </div>
-            <div class="card-footer">
-                    <small class="text-muted">${{ producto.precio }}</small>
-            </div>
+        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre}}</h5>
+            <p class="card-text">{{ producto.restaurante }}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">${{ producto.precio }}</small>
+        </div>
     </div>
     {% endfor %}
 </div>
 {% endif %}
+{% endcomment %}
 
 {% comment %}
 {% if productos %}

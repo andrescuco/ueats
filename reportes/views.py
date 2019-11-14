@@ -1,4 +1,3 @@
-import csv
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -9,6 +8,9 @@ from .models import Pedido
 from .models import Usuario
 from .models import Repartidor
 from .models import Producto
+from .models import Restaurante
+
+import csv
 
 # Clase que creara una vista API
 class ChartData(APIView):
@@ -24,6 +26,24 @@ class ChartData(APIView):
             "default": default_items,
         }
         return Response(data)
+
+# Función que realiza los filtros tomando como referencia un request GET
+def filtro(request):
+    qs = Producto.objects.all()
+    restaurante = request.GET.get('restaurante')
+
+    if restaurante != '' and restaurante is not None and restaurante != 'Restaurante':
+        qs = qs.filter(restaurante__nombre=restaurante)
+
+    return qs
+
+def productos(request):
+    qs = filtro(request)
+    context = {
+        'productos': qs,
+        'restaurantes': Restaurante.objects.all(),
+    }
+    return render(request, 'reportes/productos.html', context)
 
 def index(request):
     pedidos = list(Pedido.objects.all().order_by('-id'))
@@ -43,11 +63,6 @@ def repartidores(request):
     repartidores = list(Repartidor.objects.all())
     context = {'repartidores': repartidores}
     return render(request, 'reportes/repartidores.html', context)
-
-def productos(request):
-    productos = list(Producto.objects.all())
-    context = {'productos': productos}
-    return render(request, 'reportes/productos.html', context)
 
 def exportar_pedidos_csv(request):
     response = HttpResponse(content_type='text/csv')

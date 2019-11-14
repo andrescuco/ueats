@@ -20,6 +20,7 @@ class Restaurante(models.Model):
     nombre = models.CharField(max_length=80)
     ciudad = models.CharField(max_length=3, choices=CIUDAD)
     direccion = models.CharField(max_length=120)
+    #productos = models.ManyToManyField(Producto)
 
     def __str__(self):
         return self.nombre

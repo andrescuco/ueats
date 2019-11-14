@@ -23,6 +23,10 @@ a, a:hover {
   grid-gap: .5rem;
 }
 
+.card {
+  max-width: 200px;
+}
+
 .navbar-brand {
      padding-top: 0; 
      padding-bottom: 0;
