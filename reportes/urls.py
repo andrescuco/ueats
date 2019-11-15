@@ -13,7 +13,7 @@ urlpatterns = [
     path('repartidores/', views.repartidores, name='repartidores'),
     path('productos/', views.productos, name='productos'),
     path('reclamos/', views.reclamos, name='reclamos'),
-    path('<int:pk>/', usuario_detalle.as_view(model=Usuario), name='usuario_detalle'),
+    path('usuario/<int:pk>/', usuario_detalle.as_view(model=Usuario), name='usuario_detalle'),
     url(r'^exportar/pedidos/csv/$', views.exportar_pedidos_csv, name='exportar_pedidos_csv'),
     url(r'^api/chart/data/$', ChartData.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

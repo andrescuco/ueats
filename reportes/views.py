@@ -1,3 +1,6 @@
+from datetime import datetime
+from datetime import timedelta
+from datetime import date
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -20,14 +23,26 @@ class usuario_detalle(DetailView):
 
 # Clase que creara una vista API
 class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
+
+    # Función que suma los totales de cada pedido en un día para obtener el total diario
+    def total_dia(self, dia):
+        hoy = date.today()
+        dia = hoy - timedelta(days=hoy.weekday()-dia)
+        total_dia = 0
+        for pedido in Pedido.objects.filter(fecha=dia):
+            total_dia += pedido._total()
+        return total_dia
 
     def get(self, request, format=None):
         default_items = [
-            Pedido.objects.all().count(),
-            Usuario.objects.all().count(),
-            Producto.objects.all().count(), 4, 5, 6, 9]
+            self.total_dia(0), # Lunes
+            self.total_dia(1), # Martes
+            self.total_dia(2), # Miercoles
+            self.total_dia(3), # Jueves
+            self.total_dia(4), # Viernes
+            self.total_dia(5), # Sabado
+            self.total_dia(6), # Domingo
+            ]
         data = {
             "default": default_items,
         }
