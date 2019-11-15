@@ -31,7 +31,7 @@ class ChartData(APIView):
         total_dia = 0
         for pedido in Pedido.objects.filter(fecha=dia):
             total_dia += pedido._total()
-        return total_dia
+        return total_dia * 1000
 
     def get(self, request, format=None):
         default_items = [
