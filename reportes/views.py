@@ -9,6 +9,7 @@ from .models import Usuario
 from .models import Repartidor
 from .models import Producto
 from .models import Restaurante
+from .models import Reclamo
 
 import csv
 
@@ -58,6 +59,11 @@ def clientes(request):
     usuarios = list(Usuario.objects.all())
     context = {'usuarios': usuarios}
     return render(request, 'reportes/clientes.html', context)
+
+def reclamos(request):
+    reclamos = list(Reclamo.objects.all())
+    context = {'reclamos': reclamos}
+    return render(request, 'reportes/reclamos.html', context)
 
 def repartidores(request):
     repartidores = list(Repartidor.objects.all())

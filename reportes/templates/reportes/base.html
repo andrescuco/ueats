@@ -70,9 +70,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'quejas' %}active{% endif %}" href="quejas">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'reclamos' %}active{% endif %}" href="{% url 'reclamos' %}">
                                 <span data-feather="user-x"></span>
-                                Quejas
+                                Reclamos
                             </a>
                         </li>
                         <li class="nav-item">
@@ -81,6 +81,12 @@
                                 Indicadores
                             </a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/andrescuco/ueats">
+                                    <span data-feather="github"></span>
+                                    Github
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </nav>

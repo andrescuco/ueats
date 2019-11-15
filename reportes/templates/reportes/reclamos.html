@@ -1,0 +1,39 @@
+{% extends 'reportes/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
+    <h2>Reclamos</h2>
+    <div>
+        <a href="/admin/reportes/reclamo/"><button type="button"
+                class="btn btn-sm btn-outline-secondary">Editar</button></a>
+    </div>
+</div>
+
+{% if reclamos %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Pedido</th>
+            <th>Tipo</th>
+            <th>Resuelto</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reclamo in reclamos %}
+        <tr>
+            <td>{{ reclamo.id }}</td>
+            <td>{{ reclamo.pedido}}</td>
+            <td>{{ reclamo.tipo }}</td>
+            <td>{% if reclamo.estado == 0 %}No
+                {% elif reclamo.estado == 1 %}Si{% endif %}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay reclamos en la base de datos.</p>
+{% endif %}
+{% endblock %}
