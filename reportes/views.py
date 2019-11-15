@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.views.generic import DetailView
 
 from .models import Pedido
 from .models import Usuario
@@ -12,6 +13,10 @@ from .models import Restaurante
 from .models import Reclamo
 
 import csv
+
+# Vista basada en clase generica DetailView para ver información del usuario
+class usuario_detalle(DetailView):
+    model: Usuario
 
 # Clase que creara una vista API
 class ChartData(APIView):

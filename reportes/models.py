@@ -104,9 +104,10 @@ class Reclamo(models.Model):
     TIPO = (
         ('I', 'Pedido incorrecto'),
         ('D', 'Pedido demorado'),
-        ('N', 'Pedidio no llegó')
+        ('N', 'Pedido no llegó')
     )
 
+    fecha = models.DateField(auto_now_add=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=1, choices=TIPO)
     estado = models.BooleanField(default=True)

@@ -14,6 +14,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Fecha</th>
             <th>Pedido</th>
             <th>Tipo</th>
             <th>Resuelto</th>
@@ -24,15 +25,22 @@
         {% for reclamo in reclamos %}
         <tr>
             <td>{{ reclamo.id }}</td>
-            <td>{{ reclamo.pedido}}</td>
-            <td>{{ reclamo.tipo }}</td>
+            <td>{{ reclamo.fecha }}</td>
+            <td>#{{ reclamo.pedido}}</td>
+            <td>{% if reclamo.tipo == 'I' %}Pedido incorrecto
+                {% elif reclamo.tipo == 'D' %}Pedido demorado
+                {% elif reclamo.tipo == 'N' %}Pedido no llegó{% endif %}</td>
             <td>{% if reclamo.estado == 0 %}No
                 {% elif reclamo.estado == 1 %}Si{% endif %}</td>
+            <td>
+                <a href="#" onclick="return abrir_modal('{% url 'usuario_detalle' reclamo.pedido %}')">Ver detalle <span data-feather="arrow-right"></span></a>
+            </td>
 
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<div id="popup" class="modal fade" role="dialog"></div>
 {% else %}
 <p>No hay reclamos en la base de datos.</p>
 {% endif %}
