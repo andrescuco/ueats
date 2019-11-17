@@ -1,13 +1,13 @@
-# Ueats Manager
+# Ueats
 [![HitCount](http://hits.dwyl.io/andrescuco/ueats.svg)](http://hits.dwyl.io/andrescuco/ueats)
 
-Aplicación full stack administrativa para empresa repartidora con Django.
+Aplicación full stack administrativa para empresa repartidora con Django. [¡Accede a la demo!](http://andrescuco.pythonanywhere.com/)
 
 ## Tecnologías
 
 Nombre | Uso
 ------------ | -------------
-`heroku` | deployment
+`pythonanywhere` | deployment
 `rest_framework` | data a gráficos via API
 `jquery` | js general
 `chart.js` | gráficos
