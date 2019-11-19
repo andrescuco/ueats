@@ -14,34 +14,34 @@
         <canvas id="myChart"></canvas>
     </div>
     <div class="col-sm-3 d-flex align-content-center flex-wrap">
-        <div class="card-deck">
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+         <div class="card-deck"> 
+            <div class="card bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ pedidos_totales }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Pedidos</h6>
                 </div>
             </div>
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ usuarios_totales }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Clientes</h6>
 
                 </div>
             </div>
-            <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ repartidores_totales }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Repartidores</h6>
 
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
 <script>
     $.ajax({
         method: 'GET',
-        url: '/api/chart/data/',
+        url: '/api/grafico/data/',
         success: function (data) {
             defaultData = data.default
             setChart()
@@ -71,7 +71,7 @@
             options: {
                 legend: {
                     display: false
-                }, 
+                },  
                 scales: {
                     yAxes: [{
                         ticks: {
