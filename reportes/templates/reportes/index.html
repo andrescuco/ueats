@@ -14,7 +14,7 @@
         <canvas id="myChart"></canvas>
     </div>
     <div class="col-sm-3 d-flex align-content-center flex-wrap">
-         <div class="card-deck"> 
+        <div class="card-deck">
             <div class="card bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ pedidos_totales }}</h5>
@@ -35,7 +35,7 @@
 
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 <script>
@@ -44,6 +44,14 @@
         url: '/api/grafico/data/',
         success: function (data) {
             defaultData = data.default
+            arrValoresZero = defaultData.every(item => item === 0);
+            // Si los valores de la API retornan todos 0 (no hay pedidos en la última semana) carga datos dummy
+            if(arrValoresZero == true) {
+                defaultData = [320000, 450000, 400000, 520000, 500000, 800000, 850000];
+                console.log("El valor del array son todos 0");
+            } else {
+                console.log("El array tiene valores diferentes de 0");
+            }
             setChart()
             console.log(data)
         },
@@ -71,11 +79,11 @@
             options: {
                 legend: {
                     display: false
-                },  
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            stepSize: 10000,
+                            stepSize: 100000,
                             callback: function (value) {
                                 var ranges = [
                                     { divider: 1e6, suffix: 'M' },
